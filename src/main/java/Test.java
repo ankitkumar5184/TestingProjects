@@ -9,20 +9,22 @@ import java.util.concurrent.TimeUnit;
 
 
 public class Test {
-    public static void main(String args[]) {
+    public void login() {
         System.setProperty("webdriver.chrome.driver", "D:\\SeleniumProject\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("https://www.google.com/");
-        System.out.println(driver.getTitle());
-        WebElement p=driver.findElement(By.name("q"));
-        p.sendKeys("facebook");
-        WebDriverWait w = new WebDriverWait(driver, 5);
-        w.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//ul")));
-        p.submit();
+        driver.get("https://opensource-demo.orangehrmlive.com/");
+        //System.out.println(driver.getTitle());
+        //WebElement p=driver.findElement(By.name("q"));
+        //p.sendKeys("facebook");
+        WebElement username=driver.findElement(By.id("username"));
+        WebElement password=driver.findElement(By.id("password"));
+        WebElement login=driver.findElement(By.name("commit"));
+        username.sendKeys("Admin");
+        password.sendKeys("admin123");
+        login.click();
 
-        // Thread.sleep(3000);
-        driver.close();
+
 
 
 
