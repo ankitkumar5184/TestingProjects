@@ -10,10 +10,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class ClassName {
+    WebDriver driver = new ChromeDriver();
     @SuppressWarnings("deprecation")
     public void Date() {
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
+
+
         driver.manage().window().maximize();
         driver.get("https://demo.guru99.com/test/");
         //noinspection deprecation
@@ -23,12 +24,16 @@ public class ClassName {
         datebox.sendKeys(Keys.TAB);
         datebox.sendKeys("0245PM");
         driver.findElement(By.xpath("/html/body/form/input[2]")).click();
+
+
         driver.close();
 
     }
 
     public static void main(String[] args) {
+        WebDriverManager.chromedriver().setup();
         ClassName cs = new ClassName();
         cs.Date();
+
     }
 }
