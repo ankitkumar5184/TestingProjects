@@ -76,8 +76,6 @@ class Parent {
         System.out.println("Enter search to date as YYYY-MM-DD");
         String to = obj.nextLine();
 
-
-
         driver.findElement(By.id("menu_leave_viewLeaveModule")).click();
         driver.findElement(By.name("leaveList[calFromDate]")).click();
         driver.findElement(By.name("leaveList[calFromDate]")).sendKeys(from);
@@ -90,8 +88,6 @@ class Parent {
 
         driver.findElement(By.id("leaveList_txtEmployee_empName")).sendKeys("Orange Test");
         driver.findElement(By.id("btnSearch")).click();
-
-
 
        // Generating random names
         String first = RandomStringUtils.randomAlphabetic(7);
@@ -115,10 +111,10 @@ class Parent {
         driver.findElement(By.name("addCandidate[email]")).sendKeys("username"+ randInt+"@gmail.com");
         driver.findElement(By.name("addCandidate[contactNo]")).sendKeys(phoneNumber);
 
+        //Uploading files
         driver.findElement(By.name("addCandidate[email]")).sendKeys("addCandidate[keyWords]");
         driver.findElement(By.name("addCandidate[resume]")).sendKeys("C:\\Users\\AnkitKumar\\Downloads\\Assignment 2.pdf");
-        ///driver.findElement(By.name("addCandidate[appliedDate]")).click();
-        //driver.findElement(By.name("addCandidate[appliedDate]")).sendKeys("2022-01-11");
+
         driver.findElement(By.name("addCandidate[consentToKeepData]")).click();
         driver.findElement(By.id("btnSave")).click();
     }
