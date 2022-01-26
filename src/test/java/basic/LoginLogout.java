@@ -13,19 +13,21 @@ import java.time.Duration;
 import java.util.Random;
 import java.util.Scanner;
 
-class Parent {
+class Parent
+{
     WebDriver driver = new ChromeDriver();
 
 
-    void Login() throws InterruptedException {
+    void Login() throws InterruptedException
+    {
 
         driver.manage().window().maximize();
 
         // Login Credentials
-
         String login = "Admin";
         String password = "admin123";
-        driver.get("https://opensource-demo.orangehrmlive.com/");
+        String Url = "https://opensource-demo.orangehrmlive.com/";
+        driver.get(Url);
         driver.findElement(By.id("txtUsername")).sendKeys(login);
         driver.findElement(By.id("txtPassword")).sendKeys(password);
         driver.findElement(By.xpath("//*[@id=\"btnLogin\"]")).click();
@@ -34,7 +36,7 @@ class Parent {
         driver.findElement(By.xpath("//*[@id=\"btnAdd\"]")).click();
 
 
-        // Creating username
+        // Creating username and password
         String username = RandomStringUtils.randomAlphabetic(10);
         String pass =    RandomStringUtils.randomAlphabetic(8);
 
@@ -47,7 +49,6 @@ class Parent {
         status.selectByIndex(1);
         driver.findElement(By.id("systemUser_password")).sendKeys(pass);
         driver.findElement(By.id("systemUser_confirmPassword")).sendKeys(pass);
-
         driver.findElement(By.id("btnSave")).click();  // saving user
 
         driver.findElement(By.xpath("//*[@id=\"menu_admin_viewAdminModule\"]/b")).click();
@@ -61,14 +62,13 @@ class Parent {
         Assert.assertEquals("Username is not same.", username, actual.getText());
         System.out.println("Successfully added");
 
-        //deleting user
+        //Deleting user
         driver.findElement(By.name("chkSelectRow[]")).click();
         driver.findElement(By.name("btnDelete")).click();
         WebElement del = driver.findElement(By.id("dialogDeleteBtn"));
         del.click();
 
         // DatePicker
-
         System.out.println("Enter search from date as YYYY-MM-DD");
         Scanner obj=new Scanner(System.in);
         String from=obj.nextLine();
@@ -118,7 +118,8 @@ class Parent {
         driver.findElement(By.id("btnSave")).click();
     }
 
-    void Logout() {
+    void Logout()
+    {
         WebElement out = driver.findElement(By.xpath("//*[@id=\"welcome-menu\"]/ul/li[3]/a"));
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click();", out);
@@ -128,8 +129,10 @@ class Parent {
     }
 }
 
-public class LoginLogout extends Parent {
-    public static void main(String[] args) throws InterruptedException {
+public class LoginLogout extends Parent
+{
+    public static void main(String[] args) throws InterruptedException
+    {
 
         WebDriverManager.chromedriver().setup();
         LoginLogout lg = new LoginLogout();
